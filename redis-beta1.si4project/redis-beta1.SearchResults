@@ -1,0 +1,9 @@
+---- server.clients Matches (8 in 1 files) ----
+redisServer in redis.c :     list *clients;
+closeTimedoutClients in redis.c :     li = listGetIterator(server.clients,AL_START_HEAD);
+serverCron in redis.c :     if (!(loops % 5)) redisLog(REDIS_DEBUG,"%d clients connected",listLength(server.clients));
+initServer in redis.c :     server.clients = listCreate();
+initServer in redis.c :     if (!server.dict || !server.clients || !server.el || !server.objfreelist)
+freeClient in redis.c :     ln = listSearchKey(server.clients,c);
+freeClient in redis.c :     listDelNode(server.clients,ln);
+createClient in redis.c :     if (!listAddNodeTail(server.clients,c)) oom("listAddNodeTail");
